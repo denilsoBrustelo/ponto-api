@@ -1,2 +1,3 @@
 # ponto-api
-API RESTful para registro e consulta de horas trabalhadas.
+API RESTful para o controle de horas trabalhadas de usuários desenvolvido em Spring Boot.
+
