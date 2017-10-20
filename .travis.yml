@@ -1,0 +1,11 @@
+language: java
+jdk: oraclejdk8
+
+services:
+  - postgresql
+
+before_script:
+  - psql -c 'CREATE DATABASE ponto_test;' -U postgres
+  - psql -c "ALTER USER postgres WITH PASSWORD '123456';" -U postgres
+
+script: gradle test
