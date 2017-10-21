@@ -16,11 +16,13 @@ public class BCryptUtilTests {
         String senha = "123456";
         String hash = BCryptUtil.getHash(senha);
 
+        assertNotNull(hash);
+        assertTrue(!hash.isEmpty());
         assertTrue(BCryptUtil.check(senha, hash));
     }
 
     @Test
-    public void testGerarHashComSenhaErrada() {
+    public void testVerificarSenhaErrada() {
         String senha = "123456";
         String senhaErrada = "123450";
         String hash = BCryptUtil.getHash(senha);
@@ -29,7 +31,29 @@ public class BCryptUtilTests {
     }
 
     @Test
-    public void testGerarHashComSenhaNuka() {
+    public void testVerificarSenhaCandidataNula() {
+        String senha = "123456";
+        String hash = BCryptUtil.getHash(senha);
+
+        assertFalse(BCryptUtil.check(null, hash));
+    }
+
+    @Test
+    public void testVerificarHashNulo() {
+        String senha = "123456";
+
+        assertFalse(BCryptUtil.check(senha, null));
+    }
+
+    @Test
+    public void testGerarHashComSenhaVazia() {
+        String hash = BCryptUtil.getHash("");
+
+        assertTrue(hash.isEmpty());
+    }
+
+    @Test
+    public void testGerarHashComSenhaNula() {
         String hash = BCryptUtil.getHash(null);
 
         assertNull(hash);

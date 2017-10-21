@@ -4,9 +4,9 @@ import br.com.greenmile.ponto_api.domain.Usuario;
 
 public interface IUsuarioCommandService {
 
-    void save(Usuario usuario);
+    Usuario save(Usuario usuario);
 
-    void update(Usuario usuario);
+    Usuario update(Usuario usuario);
 
     void delete(Long id);
 }

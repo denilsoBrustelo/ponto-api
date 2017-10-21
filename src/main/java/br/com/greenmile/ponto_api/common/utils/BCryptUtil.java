@@ -3,6 +3,7 @@ package br.com.greenmile.ponto_api.common.utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.util.StringUtils;
 
 public class BCryptUtil {
 
@@ -13,7 +14,7 @@ public class BCryptUtil {
     }
 
     public static String getHash(String password) {
-        if (password == null) {
+        if (StringUtils.isEmpty(password)) {
             return password;
         }
 
@@ -22,6 +23,10 @@ public class BCryptUtil {
     }
 
     public static Boolean check(String candidate, String hash) {
+        if (StringUtils.isEmpty(candidate) || StringUtils.isEmpty(hash)) {
+            return false;
+        }
+
         return BCrypt.checkpw(candidate, hash);
     }
 }

@@ -14,20 +14,26 @@ public class UsuarioCommandService implements IUsuarioCommandService {
     private UsuarioRepository usuarioRepository;
 
     @Override
-    public void save(Usuario usuario) {
+    public Usuario save(Usuario usuario) {
+        Usuario usuarioSalvo = new Usuario();
+
         if (usuario != null && usuario.getId() == null) {
-            this.usuarioRepository.save(usuario);
+            usuarioSalvo = this.usuarioRepository.save(usuario);
         }
+        return usuarioSalvo;
     }
 
     @Override
-    public void update(Usuario usuario) {
+    public Usuario update(Usuario usuario) {
+        Usuario usuarioAtualizado = new Usuario();
+
         if (usuario != null && usuario.getId() != null) {
             Long id = usuario.getId();
             Usuario usuarioEncontrado = this.usuarioRepository.findOne(id);
-            Usuario usuarioAtualizado = EntityUtil.merge(usuarioEncontrado, usuario);
-            this.usuarioRepository.save(usuarioAtualizado);
+            Usuario usuarioMergiado = EntityUtil.merge(usuarioEncontrado, usuario);
+            usuarioAtualizado = this.usuarioRepository.save(usuarioMergiado);
         }
+        return usuarioAtualizado;
     }
 
     @Override
