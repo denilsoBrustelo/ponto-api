@@ -1,11 +1,12 @@
-package br.com.greenmile.ponto_api.controller;
+package br.com.greenmile.ponto_api.controller.query;
 
 import br.com.greenmile.ponto_api.common.controllers.IUsuarioQueryRest;
 import br.com.greenmile.ponto_api.domain.Usuario;
-import br.com.greenmile.ponto_api.service.UsuarioQueryService;
+import br.com.greenmile.ponto_api.service.query.UsuarioQueryService;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,12 +22,14 @@ public class UsuarioQueryRestController implements IUsuarioQueryRest {
     private UsuarioQueryService usuarioQueryService;
 
     @GetMapping("/{usuario-id}")
+    @Cacheable(value = "usuarios")
     @Override
     public Usuario findById(@PathVariable("usuario-id") Long id) {
         return this.usuarioQueryService.findById(id);
     }
 
     @GetMapping("")
+    @Cacheable(value = "usuarios")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "page", dataType = "string", paramType = "query",
                     value = "Results page you want to retrieve (0..N)"),

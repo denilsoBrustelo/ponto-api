@@ -1,4 +1,4 @@
-package br.com.greenmile.ponto_api.service;
+package br.com.greenmile.ponto_api.service.command;
 
 import br.com.greenmile.ponto_api.common.services.IUsuarioCommandService;
 import br.com.greenmile.ponto_api.common.utils.BCryptUtil;

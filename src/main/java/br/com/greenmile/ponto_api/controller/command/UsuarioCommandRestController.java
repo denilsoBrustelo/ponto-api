@@ -1,9 +1,10 @@
-package br.com.greenmile.ponto_api.controller;
+package br.com.greenmile.ponto_api.controller.command;
 
 import br.com.greenmile.ponto_api.common.controllers.IUsuarioCommandRest;
 import br.com.greenmile.ponto_api.domain.Usuario;
-import br.com.greenmile.ponto_api.service.UsuarioCommandService;
+import br.com.greenmile.ponto_api.service.command.UsuarioCommandService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -14,6 +15,7 @@ public class UsuarioCommandRestController implements IUsuarioCommandRest {
     private UsuarioCommandService usuarioCommandService;
 
     @PostMapping("")
+    @CacheEvict(value = "usuarios", allEntries = true)
     @Override
     public Usuario save(@RequestBody Usuario usuario) {
         return this.usuarioCommandService.save(usuario);

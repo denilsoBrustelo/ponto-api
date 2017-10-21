@@ -2,6 +2,8 @@ package br.com.greenmile.ponto_api.service;
 
 import br.com.greenmile.ponto_api.common.utils.BCryptUtil;
 import br.com.greenmile.ponto_api.domain.Usuario;
+import br.com.greenmile.ponto_api.service.command.UsuarioCommandService;
+import br.com.greenmile.ponto_api.service.query.UsuarioQueryService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
