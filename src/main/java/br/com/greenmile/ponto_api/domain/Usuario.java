@@ -1,5 +1,7 @@
 package br.com.greenmile.ponto_api.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -17,6 +19,7 @@ public class Usuario implements Serializable {
     private String username;
 
     @Column(nullable = false)
+    @JsonIgnore
     private String password;
 
     public Usuario() {
