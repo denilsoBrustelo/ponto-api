@@ -1,4 +1,4 @@
-package br.com.greenmile.ponto_api.common.interfaces;
+package br.com.greenmile.ponto_api.common.services;
 
 import br.com.greenmile.ponto_api.domain.Usuario;
 

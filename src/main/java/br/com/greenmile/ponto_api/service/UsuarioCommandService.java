@@ -1,6 +1,6 @@
 package br.com.greenmile.ponto_api.service;
 
-import br.com.greenmile.ponto_api.common.interfaces.IUsuarioCommandService;
+import br.com.greenmile.ponto_api.common.services.IUsuarioCommandService;
 import br.com.greenmile.ponto_api.common.utils.BCryptUtil;
 import br.com.greenmile.ponto_api.common.utils.EntityUtil;
 import br.com.greenmile.ponto_api.domain.Usuario;

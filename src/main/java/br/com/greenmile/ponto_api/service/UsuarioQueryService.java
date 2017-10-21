@@ -1,6 +1,6 @@
 package br.com.greenmile.ponto_api.service;
 
-import br.com.greenmile.ponto_api.common.interfaces.IUsuarioQueryService;
+import br.com.greenmile.ponto_api.common.services.IUsuarioQueryService;
 import br.com.greenmile.ponto_api.domain.Usuario;
 import br.com.greenmile.ponto_api.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
