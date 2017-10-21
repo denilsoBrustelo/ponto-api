@@ -1,8 +1,8 @@
-package br.com.greenmile.ponto_api.common.services;
+package br.com.greenmile.ponto_api.common.controller.commands;
 
 import br.com.greenmile.ponto_api.domain.Usuario;
 
-public interface IUsuarioCommandService {
+public interface IUsuarioCommandRest {
 
     Usuario save(Usuario usuario);
 

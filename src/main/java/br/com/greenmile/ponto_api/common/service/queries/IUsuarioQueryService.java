@@ -1,4 +1,4 @@
-package br.com.greenmile.ponto_api.common.services;
+package br.com.greenmile.ponto_api.common.service.queries;
 
 import br.com.greenmile.ponto_api.domain.Usuario;
 import org.springframework.data.domain.Page;

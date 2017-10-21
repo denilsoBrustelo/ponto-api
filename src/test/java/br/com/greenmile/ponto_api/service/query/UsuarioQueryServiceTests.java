@@ -1,4 +1,4 @@
-package br.com.greenmile.ponto_api.service;
+package br.com.greenmile.ponto_api.service.query;
 
 import br.com.greenmile.ponto_api.common.utils.BCryptUtil;
 import br.com.greenmile.ponto_api.domain.Usuario;

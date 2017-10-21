@@ -1,6 +1,6 @@
 package br.com.greenmile.ponto_api.controller.query;
 
-import br.com.greenmile.ponto_api.common.controllers.IUsuarioQueryRest;
+import br.com.greenmile.ponto_api.common.controller.queries.IUsuarioQueryRest;
 import br.com.greenmile.ponto_api.domain.Usuario;
 import br.com.greenmile.ponto_api.service.query.UsuarioQueryService;
 import io.swagger.annotations.ApiImplicitParam;
@@ -31,11 +31,11 @@ public class UsuarioQueryRestController implements IUsuarioQueryRest {
     @GetMapping("")
     @Cacheable(value = "usuarios")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "page", dataType = "string", paramType = "query",
+            @ApiImplicitParam(name = "page", dataType = "string", paramType = "queries",
                     value = "Results page you want to retrieve (0..N)"),
-            @ApiImplicitParam(name = "size", dataType = "string", paramType = "query",
+            @ApiImplicitParam(name = "size", dataType = "string", paramType = "queries",
                     value = "Number of records per page."),
-            @ApiImplicitParam(name = "sort", allowMultiple = true, dataType = "string", paramType = "query",
+            @ApiImplicitParam(name = "sort", allowMultiple = true, dataType = "string", paramType = "queries",
                     value = "Sorting criteria in the format: property(,asc|desc). " +
                             "Default sort order is ascending. " +
                             "Multiple sort criteria are supported.")

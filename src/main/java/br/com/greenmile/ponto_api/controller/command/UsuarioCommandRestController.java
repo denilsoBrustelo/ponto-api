@@ -1,6 +1,6 @@
 package br.com.greenmile.ponto_api.controller.command;
 
-import br.com.greenmile.ponto_api.common.controllers.IUsuarioCommandRest;
+import br.com.greenmile.ponto_api.common.controller.commands.IUsuarioCommandRest;
 import br.com.greenmile.ponto_api.domain.Usuario;
 import br.com.greenmile.ponto_api.service.command.UsuarioCommandService;
 import org.springframework.beans.factory.annotation.Autowired;
