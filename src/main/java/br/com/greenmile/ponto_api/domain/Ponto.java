@@ -1,6 +1,7 @@
 package br.com.greenmile.ponto_api.domain;
 
 import br.com.greenmile.ponto_api.common.enums.TipoPontoEnum;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -15,8 +16,9 @@ public class Ponto implements Serializable {
     private Long id;
 
     @Temporal(TemporalType.TIMESTAMP)
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "America/Fortaleza")
     @Column(nullable = false)
-    private Date data;
+    private Date dataCriacao;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
@@ -39,12 +41,12 @@ public class Ponto implements Serializable {
         this.id = id;
     }
 
-    public Date getData() {
-        return data;
+    public Date getDataCriacao() {
+        return dataCriacao;
     }
 
-    public void setData(Date data) {
-        this.data = data;
+    public void setDataCriacao(Date dataCriacao) {
+        this.dataCriacao = dataCriacao;
     }
 
     public TipoPontoEnum getTipoPonto() {

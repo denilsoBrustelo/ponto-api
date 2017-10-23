@@ -16,14 +16,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(value = "api/v1/usuarios")
-public class UsuarioQueryRestController implements IUsuarioQueryRest {
+public class UsuarioQueryRestController {
 
     @Autowired
     private UsuarioQueryService usuarioQueryService;
 
     @GetMapping("/{usuario-id}")
     @Cacheable(value = "usuarios")
-    @Override
     public Usuario findById(@PathVariable("usuario-id") Long id) {
         return this.usuarioQueryService.findById(id);
     }
@@ -31,16 +30,15 @@ public class UsuarioQueryRestController implements IUsuarioQueryRest {
     @GetMapping("")
     @Cacheable(value = "usuarios")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "page", dataType = "string", paramType = "queries",
+            @ApiImplicitParam(name = "page", dataType = "string", paramType = "query",
                     value = "Results page you want to retrieve (0..N)"),
-            @ApiImplicitParam(name = "size", dataType = "string", paramType = "queries",
+            @ApiImplicitParam(name = "size", dataType = "string", paramType = "query",
                     value = "Number of records per page."),
-            @ApiImplicitParam(name = "sort", allowMultiple = true, dataType = "string", paramType = "queries",
+            @ApiImplicitParam(name = "sort", allowMultiple = true, dataType = "string", paramType = "query",
                     value = "Sorting criteria in the format: property(,asc|desc). " +
                             "Default sort order is ascending. " +
                             "Multiple sort criteria are supported.")
     })
-    @Override
     public Page<Usuario> findAll(Pageable pageable) {
         return this.usuarioQueryService.findAll(pageable);
     }

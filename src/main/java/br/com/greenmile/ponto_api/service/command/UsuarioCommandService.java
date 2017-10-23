@@ -19,7 +19,7 @@ public class UsuarioCommandService implements IUsuarioCommandService {
 
     @Override
     public Usuario save(Usuario usuario) {
-        Usuario usuarioSalvo = new Usuario();
+        Usuario usuarioSalvo = null;
 
         if (usuario != null && usuario.getId() == null) {
 
@@ -35,7 +35,7 @@ public class UsuarioCommandService implements IUsuarioCommandService {
 
     @Override
     public Usuario update(Usuario usuario) {
-        Usuario usuarioAtualizado = new Usuario();
+        Usuario usuarioAtualizado = null;
 
         if (usuario != null && usuario.getId() != null) {
             Long id = usuario.getId();
