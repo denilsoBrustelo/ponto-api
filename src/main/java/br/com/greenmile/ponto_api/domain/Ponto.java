@@ -27,7 +27,7 @@ public class Ponto implements Serializable {
     @Column(nullable = false)
     private String descricao;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.DETACH})
     private Usuario usuario;
 
     public Ponto() {

@@ -1,6 +1,7 @@
 package br.com.greenmile.ponto_api.service.query;
 
 import br.com.greenmile.ponto_api.common.service.queries.IUsuarioQueryService;
+import br.com.greenmile.ponto_api.domain.Ponto;
 import br.com.greenmile.ponto_api.domain.Usuario;
 import br.com.greenmile.ponto_api.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,5 +44,20 @@ public class UsuarioQueryService implements IUsuarioQueryService {
     @Override
     public Page<Usuario> findAll(Pageable pageable) {
         return this.usuarioRepository.findAll(pageable);
+    }
+
+    @Override
+    public Ponto findPontoByUsuarioIdAndPontoId(Long usuarioId, Long pontId) {
+        return this.usuarioRepository.findByIdAndUsuarioId(usuarioId, pontId);
+    }
+
+    @Override
+    public List<Ponto> findAllPontosByUsuarioId(Long usuarioId) {
+        return this.usuarioRepository.findPontoByUsuarioId(usuarioId);
+    }
+
+    @Override
+    public Page<Ponto> findAllPontosByUsuarioId(Long usuarioId, Pageable pageable) {
+        return this.usuarioRepository.findPontoByUsuarioId(usuarioId, pageable);
     }
 }

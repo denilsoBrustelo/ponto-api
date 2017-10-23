@@ -1,5 +1,6 @@
 package br.com.greenmile.ponto_api.common.controller.commands;
 
+import br.com.greenmile.ponto_api.domain.Ponto;
 import br.com.greenmile.ponto_api.domain.Usuario;
 
 public interface IUsuarioCommandRest {
