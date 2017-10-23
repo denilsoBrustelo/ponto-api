@@ -1,15 +1,18 @@
 package br.com.greenmile.ponto_api.domain;
 
 import br.com.greenmile.ponto_api.common.enums.PermissaoEnum;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "usuario")
-public class Usuario implements Serializable {
+public class Usuario implements UserDetails, Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -53,8 +56,44 @@ public class Usuario implements Serializable {
         return username;
     }
 
+    @Transient
+    @JsonIgnore
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Transient
+    @JsonIgnore
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Transient
+    @JsonIgnore
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Transient
+    @JsonIgnore
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    @JsonIgnore
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        List<GrantedAuthority> authorities = new ArrayList<>();
+        authorities.add(new SimpleGrantedAuthority(this.permissao.toString()));
+        return authorities;
     }
 
     public String getPassword() {

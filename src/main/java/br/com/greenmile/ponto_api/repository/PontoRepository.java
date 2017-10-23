@@ -14,6 +14,7 @@ public interface PontoRepository extends JpaRepository<Ponto, Long> {
     List<Ponto> findAllByDataCriacaoBetween(Date dateStart, Date dateEnd);
 
     @Query(value = "SELECT * FROM ponto WHERE " +
-            "DATE(data_criacao) >= ?1 AND DATE(data_criacao) <= ?2", nativeQuery = true)
+            "DATE(data_criacao) >= ?1 AND DATE(data_criacao) <= ?2 " +
+            "ORDER BY data_criacao", nativeQuery = true)
     List<Ponto> findAllByDataCriacaoBetweenDates(Date dateStart, Date dateEnd);
 }

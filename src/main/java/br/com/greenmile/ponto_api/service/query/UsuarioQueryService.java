@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 
 import java.util.List;
 
@@ -22,6 +23,16 @@ public class UsuarioQueryService implements IUsuarioQueryService {
     public Usuario findById(Long id) {
         id = (id != null) ? id : 0L;
         return this.usuarioRepository.findOne(id);
+    }
+
+    @Override
+    public Usuario findByUsername(String username) {
+        Usuario usuario = null;
+
+        if (!StringUtils.isEmpty(username)) {
+            usuario = this.usuarioRepository.findByUsername(username);
+        }
+        return usuario;
     }
 
     @Override

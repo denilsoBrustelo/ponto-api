@@ -10,6 +10,8 @@ public interface IUsuarioQueryService {
 
     Usuario findById(Long id);
 
+    Usuario findByUsername(String username);
+
     List<Usuario> findAll();
 
     Page<Usuario> findAll(Pageable pageable);
