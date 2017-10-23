@@ -28,7 +28,7 @@ API RESTful para o controle de horas trabalhadas de usuários desenvolvido em Sp
 ## Configuração dos profiles
 Os profiles são divididos em 3:
 * Produção - `application-prod.properties`
-* Desenvolimento - `application-prod.properties`
+* Desenvolimento - `application-dev.properties`
 * Testes - `application-test.properties`
 
 
