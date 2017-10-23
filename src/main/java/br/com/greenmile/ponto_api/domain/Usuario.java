@@ -56,28 +56,24 @@ public class Usuario implements UserDetails, Serializable {
         return username;
     }
 
-    @Transient
     @JsonIgnore
     @Override
     public boolean isAccountNonExpired() {
         return true;
     }
 
-    @Transient
     @JsonIgnore
     @Override
     public boolean isAccountNonLocked() {
         return true;
     }
 
-    @Transient
     @JsonIgnore
     @Override
     public boolean isCredentialsNonExpired() {
         return true;
     }
 
-    @Transient
     @JsonIgnore
     @Override
     public boolean isEnabled() {

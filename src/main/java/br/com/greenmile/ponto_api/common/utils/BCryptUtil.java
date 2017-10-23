@@ -7,7 +7,7 @@ import org.springframework.util.StringUtils;
 
 public class BCryptUtil {
 
-    private static final int LOG_ROUNDS = 12;
+    public static final int LOG_ROUNDS = 12;
     private static final Logger LOG = LoggerFactory.getLogger(BCryptUtil.class);
 
     private BCryptUtil() {
