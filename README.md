@@ -11,6 +11,7 @@ API RESTful para o controle de horas trabalhadas de usuários desenvolvido em Sp
 * Spring Cache
 * JWT para autenticação
 * PostgreSQL
+* BCrypt para o hash das senhas
 * CQRS (Command Query Responsibility Segregation)
 * Swagger
 * JUnit
@@ -47,3 +48,12 @@ postgres=# CREATE DATABASE ponto_dev OWNER postgres;
 postgres=# CREATE DATABASE ponto_test OWNER postgres;
 ```
 
+## Popular o banco 
+
+### Usuário ADMIN
+```
+username: admin 
+password: 123456
+
+INSERT INTO usuario (id, nome, username, password, permissao) VALUES (1, 'admin', 'admin', '$2a$12$zufrXLwx61IJVLGEk13oI.DAiXPQmoinT5kmEZVDvnEAZGSyYm59W', 'ROLE_ADMIN');`
+```
