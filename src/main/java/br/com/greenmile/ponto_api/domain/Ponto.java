@@ -1,6 +1,7 @@
 package br.com.greenmile.ponto_api.domain;
 
 import br.com.greenmile.ponto_api.common.enums.TipoPontoEnum;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
@@ -24,10 +25,10 @@ public class Ponto implements Serializable {
     @Column(nullable = false)
     private TipoPontoEnum tipoPonto;
 
-    @Column(nullable = false)
     private String descricao;
 
     @ManyToOne(cascade = {CascadeType.DETACH})
+    @JsonBackReference(value = "usuario-ponto")
     private Usuario usuario;
 
     public Ponto() {

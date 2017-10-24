@@ -4,6 +4,7 @@ import br.com.greenmile.ponto_api.domain.Ponto;
 import br.com.greenmile.ponto_api.domain.Usuario;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -17,9 +18,7 @@ public interface IUsuarioQueryService {
 
     Page<Usuario> findAll(Pageable pageable);
 
-    Ponto findPontoByUsuarioIdAndPontoId(Long usuarioId, Long pontId);
-
-    List<Ponto> findAllPontosByUsuarioId(Long usuarioId);
+    Ponto findPontoByUsuarioIdAndPontoId(Long usuarioId, Long pontoId);
 
     Page<Ponto> findAllPontosByUsuarioId(Long usuarioId, Pageable pageable);
 }

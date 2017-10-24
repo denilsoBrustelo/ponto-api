@@ -16,13 +16,16 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 
     Usuario findByUsername(String username);
 
+    @Query(value = "SELECT MAX(ponto) FROM Ponto ponto WHERE ponto.usuario.id = :id")
+    Ponto findLastPontoByUsuarioId(@Param("id") Long id);
+
     @Query(value = "SELECT p FROM Ponto p JOIN p.usuario u " +
             "WHERE u.id = :usuarioid AND p.id = :pontoid")
-    Ponto findByIdAndUsuarioId(@Param("usuarioid") Long usuarioId, @Param("pontoid") Long pontoId);
+    Ponto findPontoByUsuarioIdAndPontoId(@Param("usuarioid") Long usuarioId, @Param("pontoid") Long pontoId);
 
     @Query("SELECT ponto FROM Ponto ponto WHERE ponto.usuario.id = :id ORDER BY ponto.id ASC")
-    List<Ponto> findPontoByUsuarioId(@Param("id") Long id);
+    List<Ponto> findAllPontosByUsuarioId(@Param("id") Long id);
 
     @Query("SELECT ponto FROM Ponto ponto WHERE ponto.usuario.id = :id ORDER BY ponto.id ASC")
-    Page<Ponto> findPontoByUsuarioId(@Param("id") Long id, Pageable pageable);
+    Page<Ponto> findAllPontosByUsuarioId(@Param("id") Long id, Pageable pageable);
 }

@@ -2,6 +2,7 @@ package br.com.greenmile.ponto_api.domain;
 
 import br.com.greenmile.ponto_api.common.enums.PermissaoEnum;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -31,6 +32,7 @@ public class Usuario implements UserDetails, Serializable {
     private PermissaoEnum permissao;
 
     @OneToMany(cascade = CascadeType.ALL)
+    @JsonManagedReference(value = "usuario-ponto")
     private Set<Ponto> pontos = new HashSet<>();
 
     public Usuario() {

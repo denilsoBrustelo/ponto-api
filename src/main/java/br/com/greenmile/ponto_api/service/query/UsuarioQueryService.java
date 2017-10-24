@@ -47,17 +47,20 @@ public class UsuarioQueryService implements IUsuarioQueryService {
     }
 
     @Override
-    public Ponto findPontoByUsuarioIdAndPontoId(Long usuarioId, Long pontId) {
-        return this.usuarioRepository.findByIdAndUsuarioId(usuarioId, pontId);
-    }
-
-    @Override
-    public List<Ponto> findAllPontosByUsuarioId(Long usuarioId) {
-        return this.usuarioRepository.findPontoByUsuarioId(usuarioId);
+    public Ponto findPontoByUsuarioIdAndPontoId(Long usuarioId, Long pontoId) {
+        return this.usuarioRepository.findPontoByUsuarioIdAndPontoId(usuarioId, pontoId);
     }
 
     @Override
     public Page<Ponto> findAllPontosByUsuarioId(Long usuarioId, Pageable pageable) {
-        return this.usuarioRepository.findPontoByUsuarioId(usuarioId, pageable);
+        return this.usuarioRepository.findAllPontosByUsuarioId(usuarioId, pageable);
+    }
+
+    public List<Ponto> findAllPontosByUsuarioId(Long usuarioId) {
+        return this.usuarioRepository.findAllPontosByUsuarioId(usuarioId);
+    }
+
+    public Ponto findLastPontoByUsuarioId(Long id) {
+        return this.usuarioRepository.findLastPontoByUsuarioId(id);
     }
 }

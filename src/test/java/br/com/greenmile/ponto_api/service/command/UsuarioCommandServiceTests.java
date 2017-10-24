@@ -8,15 +8,22 @@ import br.com.greenmile.ponto_api.domain.Usuario;
 import br.com.greenmile.ponto_api.service.query.UsuarioQueryService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.mock.web.MockHttpServletRequest;
+import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.Optional;
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.mock;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -93,7 +100,7 @@ public class UsuarioCommandServiceTests {
 
     @Test
     @Transactional
-    public void testSalvarPontoEmUsuario() {
+    public void testSalvarPontoEmUsuario() throws IOException {
         Usuario usuario = new Usuario();
         usuario.setNome("Fulano");
         usuario.setUsername("lano");
@@ -110,7 +117,9 @@ public class UsuarioCommandServiceTests {
         ponto.setId(null);
         ponto.setTipoPonto(TipoPontoEnum.CHECK_IN);
         ponto.setDescricao("Início de trabalho");
-        Ponto pontoSalvo = this.usuarioCommandService.savePonto(usuarioId, ponto);
+
+        HttpServletResponse mockHttpServletResponse = mock(HttpServletResponse.class);
+        Ponto pontoSalvo = this.usuarioCommandService.savePonto(usuarioId, ponto, mockHttpServletResponse);
 
         assertNotNull(pontoSalvo);
         assertNotNull(pontoSalvo.getId());
@@ -125,7 +134,7 @@ public class UsuarioCommandServiceTests {
 
     @Test
     @Transactional
-    public void testAtualizarPontoEmUsuario() {
+    public void testAtualizarPontoEmUsuario() throws IOException {
         Usuario usuario = new Usuario();
         usuario.setNome("Fulano");
         usuario.setUsername("lano");
@@ -142,7 +151,9 @@ public class UsuarioCommandServiceTests {
         ponto.setId(null);
         ponto.setTipoPonto(TipoPontoEnum.CHECK_IN);
         ponto.setDescricao("Início de trabalho");
-        Ponto pontoSalvo = this.usuarioCommandService.savePonto(usuarioId, ponto);
+
+        HttpServletResponse mockHttpServletResponse = mock(HttpServletResponse.class);
+        Ponto pontoSalvo = this.usuarioCommandService.savePonto(usuarioId, ponto, mockHttpServletResponse);
 
         assertNotNull(pontoSalvo);
         assertNotNull(pontoSalvo.getId());
@@ -165,7 +176,7 @@ public class UsuarioCommandServiceTests {
 
     @Test
     @Transactional
-    public void testDeletarPontoEmUsuario() {
+    public void testDeletarPontoEmUsuario() throws IOException {
         Usuario usuario = new Usuario();
         usuario.setNome("Fulano");
         usuario.setUsername("lano");
@@ -182,7 +193,9 @@ public class UsuarioCommandServiceTests {
         ponto.setId(null);
         ponto.setTipoPonto(TipoPontoEnum.CHECK_IN);
         ponto.setDescricao("Início de trabalho");
-        Ponto pontoSalvo = this.usuarioCommandService.savePonto(usuarioId, ponto);
+
+        HttpServletResponse mockHttpServletResponse = mock(HttpServletResponse.class);
+        Ponto pontoSalvo = this.usuarioCommandService.savePonto(usuarioId, ponto, mockHttpServletResponse);
 
         assertNotNull(pontoSalvo);
         assertNotNull(pontoSalvo.getId());
