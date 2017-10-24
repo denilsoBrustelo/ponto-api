@@ -27,6 +27,7 @@ public class UsuarioCommandRestController implements IUsuarioCommandRest {
     }
 
     @PutMapping("")
+    @CacheEvict(value = "usuarios", allEntries = true)
     @Override
     public Usuario update(@RequestBody Usuario usuario) {
         return this.usuarioCommandService.update(usuario);
@@ -50,6 +51,7 @@ public class UsuarioCommandRestController implements IUsuarioCommandRest {
     }
 
     @PutMapping("/{usuario-id}/pontos")
+    @CacheEvict(value = "pontos", allEntries = true)
     @Override
     public Ponto updatePonto(@PathVariable("usuario-id") Long usuarioId,
                              @RequestBody Ponto ponto) {

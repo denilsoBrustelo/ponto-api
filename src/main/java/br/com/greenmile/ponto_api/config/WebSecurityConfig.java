@@ -35,6 +35,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST, "/login").permitAll()
 
                 .antMatchers(HttpMethod.GET, "/api/v1/usuarios").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/v1/usuarios/**").permitAll()
 
                 .antMatchers(HttpMethod.GET, "/api/webjars/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/swagger-ui.html").permitAll()
@@ -47,6 +48,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, "/v2/api-docs/**").permitAll()
 
                 .anyRequest().authenticated()
+
+                .antMatchers(HttpMethod.POST, "/api/v1/usuarios").hasRole("ADMIN")
+                .antMatchers(HttpMethod.PUT, "/api/v1/usuarios").hasRole("ADMIN")
+                .antMatchers(HttpMethod.DELETE, "/api/v1/usuarios").hasRole("ADMIN")
+
                 .and()
                 // We filter the api/login requests
                 .addFilterBefore(new JWTLoginFilter("/login", authenticationManager()),

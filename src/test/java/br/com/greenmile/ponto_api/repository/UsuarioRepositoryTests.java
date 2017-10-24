@@ -1,7 +1,6 @@
 package br.com.greenmile.ponto_api.repository;
 
 import br.com.greenmile.ponto_api.common.enums.PermissaoEnum;
-import br.com.greenmile.ponto_api.common.utils.BCryptUtil;
 import br.com.greenmile.ponto_api.domain.Usuario;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,9 +9,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 
 import static org.junit.Assert.*;
 
@@ -31,7 +27,7 @@ public class UsuarioRepositoryTests {
         usuario.setNome("Fulano");
         usuario.setUsername("lano");
         usuario.setPassword("123");
-        usuario.setPermissao(PermissaoEnum.ROLE_ADMIN);
+        usuario.setPermissao(PermissaoEnum.ADMIN);
         Usuario usuarioSalvo = this.usuarioRepository.save(usuario);
 
         assertNotNull(usuarioSalvo);
@@ -42,7 +38,7 @@ public class UsuarioRepositoryTests {
 
         assertNotNull(usuarioEncontrado);
         assertEquals(userId, usuarioEncontrado.getId());
-        assertEquals(PermissaoEnum.ROLE_ADMIN, usuarioEncontrado.getPermissao());
+        assertEquals(PermissaoEnum.ADMIN, usuarioEncontrado.getPermissao());
         assertEquals(1, usuarioEncontrado.getAuthorities().size());
     }
 }

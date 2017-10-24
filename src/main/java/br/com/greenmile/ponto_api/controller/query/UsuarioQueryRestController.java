@@ -1,6 +1,7 @@
 package br.com.greenmile.ponto_api.controller.query;
 
 import br.com.greenmile.ponto_api.common.controller.queries.IUsuarioQueryRest;
+import br.com.greenmile.ponto_api.domain.HoraTrabalhada;
 import br.com.greenmile.ponto_api.domain.Ponto;
 import br.com.greenmile.ponto_api.domain.Usuario;
 import br.com.greenmile.ponto_api.service.query.UsuarioQueryService;
@@ -10,10 +11,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Date;
+import java.util.concurrent.Callable;
 
 @RestController
 @RequestMapping(value = "api/v1/usuarios")
@@ -68,9 +70,18 @@ public class UsuarioQueryRestController implements IUsuarioQueryRest {
     })
     @Cacheable(value = "pontos")
     @Override
-    public Page<Ponto> findAllPontosByUsuarioId(@PathVariable("usuario-id") Long usuarioId,
-                                                Pageable pageable) {
+    public Page<Ponto> findAllPontosByUsuarioId(@PathVariable("usuario-id") Long usuarioId, Pageable pageable) {
         return this.usuarioQueryService.findAllPontosByUsuarioId(usuarioId, pageable);
     }
+
+    @GetMapping("/{usuario-id}/hora-trabalhada")
+    @Override
+    public Callable<HoraTrabalhada> getHoraTrabalhadaPorUsuarioIdEPeriodo(@PathVariable("usuario-id") Long usuarioId,
+                                                                          @RequestParam("data_inicio") @DateTimeFormat(pattern = "yyyy-MM-dd") Date dataInicio,
+                                                                          @RequestParam("data_fim") @DateTimeFormat(pattern = "yyyy-MM-dd") Date dataFim) {
+        return () -> this.usuarioQueryService.getHoraTrabalhadaPorUsuarioIdEPeriodo(usuarioId, dataInicio, dataFim);
+    }
+
+
     // Fim - Ponto
 }

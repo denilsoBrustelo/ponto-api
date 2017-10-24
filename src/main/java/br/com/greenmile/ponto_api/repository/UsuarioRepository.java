@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -19,13 +20,18 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
     @Query(value = "SELECT MAX(ponto) FROM Ponto ponto WHERE ponto.usuario.id = :id")
     Ponto findLastPontoByUsuarioId(@Param("id") Long id);
 
-    @Query(value = "SELECT p FROM Ponto p JOIN p.usuario u " +
-            "WHERE u.id = :usuarioid AND p.id = :pontoid")
-    Ponto findPontoByUsuarioIdAndPontoId(@Param("usuarioid") Long usuarioId, @Param("pontoid") Long pontoId);
+    @Query(value = "SELECT p FROM Ponto p JOIN p.usuario u WHERE u.id = :usuarioId AND p.id = :pontoId")
+    Ponto findPontoByUsuarioIdAndPontoId(@Param("usuarioId") Long usuarioId, @Param("pontoId") Long pontoId);
 
     @Query("SELECT ponto FROM Ponto ponto WHERE ponto.usuario.id = :id ORDER BY ponto.id ASC")
     List<Ponto> findAllPontosByUsuarioId(@Param("id") Long id);
 
     @Query("SELECT ponto FROM Ponto ponto WHERE ponto.usuario.id = :id ORDER BY ponto.id ASC")
     Page<Ponto> findAllPontosByUsuarioId(@Param("id") Long id, Pageable pageable);
+
+    @Query(value = "SELECT ponto FROM Ponto ponto WHERE ponto.usuario.id = :id " +
+            "AND ponto.dataCriacao >= :startDate AND ponto.dataCriacao <= :endDate ORDER BY ponto.id ASC")
+    List<Ponto> findAllPontosBetweenDatesByUsuarioId(@Param("id") Long id,
+                                                     @Param("startDate") Date start,
+                                                     @Param("endDate") Date end);
 }
