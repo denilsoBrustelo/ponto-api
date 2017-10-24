@@ -9,6 +9,7 @@ API RESTful para o controle de horas trabalhadas de usuários desenvolvido em Sp
 * Spring Data
 * Spring Security
 * Spring Cache
+* Retorno assíncronos com Callable
 * JWT para autenticação
 * PostgreSQL
 * BCrypt para o hash das senhas
@@ -17,13 +18,22 @@ API RESTful para o controle de horas trabalhadas de usuários desenvolvido em Sp
 * JUnit
 * Gradle
 * [Travis-CI](https://travis-ci.org/thealessandro/ponto-api)
-* [Heroku](https://www.heroku.com/)
+* [Heroku](https://api-ponto.herokuapp.com)
 
 ## Documentação da API gerada pelo Swagger
-`http://localhost:8080/api/swagger-ui.html`
+```
+https://api-ponto.herokuapp.com/api/swagger-ui.html
+http://localhost:8080/api/swagger-ui.html
+```
 
 ## Base URL
-`http://localhost:8080/api/v1`
+```
+https://api-ponto.herokuapp.com/api/v1
+http://localhost:8080/api/v1
+```
+
+## Alguns testes com o Postman
+Aquivo na raiz do projeto: `Ponto-API.postman_collection.json` 
 
 
 ## Configuração dos profiles

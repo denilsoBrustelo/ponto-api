@@ -1,0 +1,159 @@
+{
+	"id": "27305a36-1727-e13e-1640-30c17f9c37a3",
+	"name": "Ponto-API",
+	"description": "",
+	"order": [
+		"89fc494a-5110-b4bd-35b3-3a473d203ff2",
+		"ad585538-692f-0565-c982-6797b335f0f3",
+		"21be322a-1626-c912-24be-245c6dac9d8a",
+		"02194535-750a-23ee-669d-87698ea06a2d"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1508847612392,
+	"owner": "1798317",
+	"public": false,
+	"requests": [
+		{
+			"id": "02194535-750a-23ee-669d-87698ea06a2d",
+			"headers": "Authorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTUwOTcxMTY3M30.0N4lwGadZe_gjNfSJmMKrEASRVbQP2I0KCHrJ3C0dPHzAiiBibuHwlq8c7xgMhq5ySJxr5VorcB_77fQ0-L8dg\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTUwOTcxMTY3M30.0N4lwGadZe_gjNfSJmMKrEASRVbQP2I0KCHrJ3C0dPHzAiiBibuHwlq8c7xgMhq5ySJxr5VorcB_77fQ0-L8dg",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/api/v1/usuarios/10",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "DELETE",
+			"collectionId": "27305a36-1727-e13e-1640-30c17f9c37a3",
+			"data": null,
+			"dataMode": "params",
+			"name": "http://localhost:8080/api/v1/usuarios/10",
+			"description": "Deletando um usuário",
+			"descriptionFormat": "html",
+			"time": 1508850605897,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "21be322a-1626-c912-24be-245c6dac9d8a",
+			"headers": "Authorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTUwOTcxMTY3M30.0N4lwGadZe_gjNfSJmMKrEASRVbQP2I0KCHrJ3C0dPHzAiiBibuHwlq8c7xgMhq5ySJxr5VorcB_77fQ0-L8dg\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTUwOTcxMTY3M30.0N4lwGadZe_gjNfSJmMKrEASRVbQP2I0KCHrJ3C0dPHzAiiBibuHwlq8c7xgMhq5ySJxr5VorcB_77fQ0-L8dg",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/api/v1/usuarios/10/pontos",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "27305a36-1727-e13e-1640-30c17f9c37a3",
+			"data": [],
+			"dataMode": "raw",
+			"name": "http://localhost:8080/api/v1/usuarios/10/pontos",
+			"description": "Salvar ponto",
+			"descriptionFormat": "html",
+			"time": 1508848609863,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\n  \"tipoPonto\": \"CHECK_IN\",\n  \"dataCriacao\": \"2017-10-24 09:34:00\",\n  \"descricao\": \"Início de trabalho\"\n}"
+		},
+		{
+			"id": "89fc494a-5110-b4bd-35b3-3a473d203ff2",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/login",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "27305a36-1727-e13e-1640-30c17f9c37a3",
+			"data": [],
+			"dataMode": "raw",
+			"name": "http://localhost:8080/login",
+			"description": "Gerando o token JWT",
+			"descriptionFormat": "html",
+			"time": 1508847716588,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\n\t\"username\": \"admin\",\n\t\"password\": \"123456\"\n}"
+		},
+		{
+			"id": "ad585538-692f-0565-c982-6797b335f0f3",
+			"headers": "Authorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTUwOTcxMTY3M30.0N4lwGadZe_gjNfSJmMKrEASRVbQP2I0KCHrJ3C0dPHzAiiBibuHwlq8c7xgMhq5ySJxr5VorcB_77fQ0-L8dg\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTUwOTcxMTY3M30.0N4lwGadZe_gjNfSJmMKrEASRVbQP2I0KCHrJ3C0dPHzAiiBibuHwlq8c7xgMhq5ySJxr5VorcB_77fQ0-L8dg",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/api/v1/usuarios",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "27305a36-1727-e13e-1640-30c17f9c37a3",
+			"data": [],
+			"dataMode": "raw",
+			"name": "http://localhost:8080/api/v1/usuarios",
+			"description": "Salvar um novo usuário",
+			"descriptionFormat": "html",
+			"time": 1508848285386,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\n  \"nome\": \"Alex\",\n  \"username\": \"alex\",\n  \"password\": \"123456\",\n  \"permissao\": \"FUNCIONARIO\"\n}"
+		}
+	]
+}
