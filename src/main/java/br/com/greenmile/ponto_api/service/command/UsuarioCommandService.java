@@ -88,19 +88,18 @@ public class UsuarioCommandService implements IUsuarioCommandService {
                 if (pontoEncontrado.getTipoPonto().equals(TipoPontoEnum.CHECK_OUT)) {
                     response.sendError(HttpStatus.BAD_REQUEST.value(), "O primeiro ponto não pode ser CHECK OUT");
                     return null;
-                } else {
-                    usuarioEncontrado.getPontos().add(pontoEncontrado);
-                    pontoEncontrado.setUsuario(usuarioEncontrado);
-                    response.sendError(HttpStatus.OK.value(), "Ponto salvo");
-                    pontoSalvo = this.pontoCommandService.save(pontoEncontrado);
                 }
             }
             else if (lastPonto != null) {
                 DateTime start = new DateTime(lastPonto.getDataCriacao());
                 DateTime end = new DateTime(pontoEncontrado.getDataCriacao());
-                int days = Days.daysBetween(start, end).getDays();
 
-                if (days > 1) {
+                if (start.compareTo(end) >= 0) {
+                    response.sendError(HttpStatus.BAD_REQUEST.value(), "Ponto possui data/hora inferior ou igual que o último ponto");
+                    return null;
+                }
+
+                if (Days.daysBetween(start, end).getDays() > 1) {
                     response.sendError(HttpStatus.BAD_REQUEST.value(), "A diferença de datas não pode passar de 1 dia");
                     return null;
                 }
@@ -109,12 +108,12 @@ public class UsuarioCommandService implements IUsuarioCommandService {
                     response.sendError(HttpStatus.BAD_REQUEST.value(), "Tipo do ponto é igual com o anterior");
                     return null;
                 }
-
-                usuarioEncontrado.getPontos().add(pontoEncontrado);
-                pontoEncontrado.setUsuario(usuarioEncontrado);
-                response.sendError(HttpStatus.OK.value(), "Ponto salvo");
-                pontoSalvo = this.pontoCommandService.save(pontoEncontrado);
             }
+
+            usuarioEncontrado.getPontos().add(pontoEncontrado);
+            pontoEncontrado.setUsuario(usuarioEncontrado);
+            response.sendError(HttpStatus.OK.value(), "Ponto salvo");
+            pontoSalvo = this.pontoCommandService.save(pontoEncontrado);
         }
         return pontoSalvo;
     }
