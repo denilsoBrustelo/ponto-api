@@ -6,6 +6,3 @@ before_script:
 - psql -c 'CREATE DATABASE ponto_test;' -U postgres
 - psql -c "ALTER USER postgres WITH PASSWORD '123456';" -U postgres
 script: gradle test
-deploy:
-  api_key:
-    secure: i0JMDdNRVWRqnVQDV9YQGUWgkgiwCXkEu/bvH9vNXgMn/IL2M7coc19w/LO2BpnQoluMU651n1uqrdlvXJo+tFoRqNFfYGQbpcAQ1pdQFg0/Rk4Aclwu9w9gYKxetbTST3eoYtr82oNgCSOa1NWKR2HXUHn/3MHYOmT8SdP6CdIagkBbEN5dPuq73O2+5G6oP3tUhtn6+mjRwBx6U4ukn3ctCeqF5eB4BoTfKPITq7q21nH2lLwUJLVZAKm1y82RiLZkaAAx07T9PbFjMwtAxnXwTFJz3IUwFXxAbuG4dHmEB3SVrTNNVFaFkOv6g57fsT/PTk+2pTvdyvTUQS/vyKkX+ZqhA5xcwEv3uOdvsMSl2VfCKL/FradUJ4wILvv0PuoIZuOeOZD1KKdj9SMkWbLQPIElm5tf0p8/z6OY8gfYA3LdeuYwM5X504J41A2sUBV4CvrQSB9p0jaNVINSKxdAy5UqzB3nKhl5BGMlwlLrEHJVVHnfm4Jgna8tpgJO1PSoWkClmsZ/ARtrwnbX7LiGiF1bSpVIuxk6WFJE8e+Ecq/Vo+3poAmx+5BFl0GObm5ATBncPEd7wWmkO12+umihnRX3OWTRUrd5WZYEM9leUomsiRRJfKlJZU2pUhQUvkSs4wvO3ccxb2PvaB4yGfoMvXT7Wvms1QA4ZW4fH+g=
