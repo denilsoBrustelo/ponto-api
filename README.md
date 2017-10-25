@@ -39,7 +39,7 @@ Aquivo na raiz do projeto: `Ponto-API.postman_collection.json`
 ## Configuração dos profiles
 Os profiles são divididos em 3:
 * Produção - `application-prod.properties`
-* Desenvolimento - `application-dev.properties`
+* Desenvolvimento - `application-dev.properties`
 * Testes - `application-test.properties`
 
 
