@@ -18,7 +18,7 @@ API RESTful para o controle de horas trabalhadas de usuários desenvolvido em Sp
 * JUnit
 * Gradle
 * [Travis-CI](https://travis-ci.org/thealessandro/ponto-api)
-* [Heroku](https://api-ponto.herokuapp.com)
+* [Heroku](https://api-ponto.herokuapp.com/api/swagger-ui.html)
 
 ## Documentação da API gerada pelo Swagger
 ```
